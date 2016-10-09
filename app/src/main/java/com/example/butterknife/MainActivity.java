@@ -8,9 +8,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
+import butterknife.OnClick;
+
+import static android.R.attr.button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +40,21 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    @OnClick({R.id.button_1, R.id.button_2})
+    public void buttonClick(Button button) {
+        Toast.makeText(this, button.getText().toString(), Toast.LENGTH_SHORT).show();
+    }
+
+    @OnCheckedChanged(R.id.check_box)
+    public void checkBoxClick(CheckBox checkBox) {
+        if(checkBox.isChecked()) {
+            Toast.makeText(this, "Checked", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this, "Unchecked", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
